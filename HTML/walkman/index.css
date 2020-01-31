@@ -1,0 +1,14 @@
+/* CSS Document */
+
+p{
+	font-size: 25px;
+	left:100px;	
+	margin:10px;
+}
+
+button{
+	width:140px;
+	height:40px;
+	font-size: 20px;
+	margin:10px;
+}

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<!-- https://drv.tw/~for.testing.112233/gd/Web/Host/walkMan/walk.html -->
+<!-- https://pgleighfdvczzxxlzpu9wq-on.drv.tw/Web/Host/walkMan/walk.html -->
+
+<html>
+	<head>
+		<meta charset="UTF-8"/>
+		<title>walk</title>
+		<link rel="stylesheet" type="text/css" href="walk.css"/>
+		<link rel="stylesheet" type="text/css" href="game.css"/>
+		<script type="text/javascript" src='game.js'> </script>
+	</head>
+
+	<body>
+		<div id="game">
+			<div id="ground"></div>
+			<div id="walkman"></div>
+			<div id="timer">Timer: 60</div>
+			<div id="score">Score: 0</div>
+			<div id="menu">
+				<button id=playbtn onclick="startGame()">Start</button>
+			</div>
+		</div>
+				
+		<!--- 
+		<button type="button" onclick="getLeftValue()">Get Left value</button>
+		<button type="button" onclick="resetTempLeft()">Reset Temp Left value</button>
+		--->
+			
+		<!-- <p id="printStatus" style="text-align:center"> Status: 0</p> -->
+		<p id="printPos" style="text-align:center"> Position: </p>
+		<p id="printTimer" style="text-align:center"> Timer: 1:00</p>
+		<div id="controlBtn">
+			<button onclick="moveManLeft(walkman)">Left</button>	
+			<button onclick="moveManRight(walkman)">Right</button>
+		</div>
+			<button onclick="startGame()">Start</button>
+			<button onclick="endGame()">End</button>
+	</body>
+	
+
+</html>

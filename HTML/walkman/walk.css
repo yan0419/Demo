@@ -1,0 +1,31 @@
+/* CSS Document */
+
+*{
+	margin:0;
+	padding:0;
+	font-size:20px;
+}
+
+html{
+	background-color:#FFF;
+}
+
+p{
+	font-size: 25px;
+	left:100px;	
+	margin:10px;
+}
+
+body{
+	/* width:720px; */
+	/* height:420px; */
+	overflow:hidden;		/* hidden scroll bar*/
+}
+
+button{
+	width:100px;
+	height:100px;
+	font-size: 30px;
+	margin:10px;
+}
+
