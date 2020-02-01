@@ -1,6 +1,8 @@
 # Hangman Game
+# C:\Users\yan04\iCloudDrive\iCloud~ch~marcela~ada~Pyto
 
 #!/usr/bin/env python3
+import sys
 import random
 
 isStart = True
@@ -46,7 +48,7 @@ def gameStart():
 			printGameStart()
 			break
 		elif wannaStart == "NO" or wannaStart == "N":
-			sys.exit("Never mind. Then see you later. Bye")
+			sys.exit("Then never mind. See you next time. Bye bye")
 		else:
 			wannaStart = input("Sorry Yes or No only. ").upper()
 			
@@ -184,12 +186,7 @@ if __name__ == "__main__":
 	randomSecertWord()
 
 	while isStart:
-
 		printInfo()
-
 		guessWord()
-		# print("Test")
-		# printInfo()
-		# print("Test")
 		isFinished()
 		
