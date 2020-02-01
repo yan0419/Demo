@@ -18,23 +18,51 @@ def randomSecertWord():
 	global blankWordList
 
 	secertWord = random.choice(wordList)
-	blankWordList = ["X"] * len(secertWord)
+	blankWordList = ["-"] * len(secertWord)
 
+
+def gameStart():
+	printWelcome()
+	userName = input("May I have your name please? ")
+
+	while True:
+		if not userName or userName[0].isalpha() == False:
+			userName = input("It is empty. Enter your name again. ")
+		else:
+			print("\n\n   Hello, " + userName + "\n")
+			print("   Thanks for playing my Hangman Game, ")
+			print("   At the beginning, You will have 3 ♥ and I ")
+			print("   will random a secert word for you and you ")
+			print("   have to make a guess for the letters. ")
+			print("   If the letter you guessed is not contain ")
+			print("   in the secert word, you will lost a ♥, ")
+			print("   that means GAMEOVER if you make 3 mistakes. \n\n")
+			break
+
+	wannaStart = input("Are you ready~~~~?").upper()
+	while True:
+		if wannaStart == "YES" or wannaStart == "Y":
+			print("OKAY~~ So good luck. " + userName + "\n")
+			printGameStart()
+			break
+		elif wannaStart == "NO" or wannaStart == "N":
+			sys.exit("Never mind. Then see you later. Bye")
+		else:
+			wannaStart = input("Sorry Yes or No only. ").upper()
+			
 
 def guessWord():
 	global correct
-	isInvalid = True
 
 	tempLetter = input("Guess a Letter. ").lower()
-	while isInvalid: 
+	while True: 
 		if tempLetter == "":
-			tempLetter = input("Cannot be empty. Try again. ")
+			tempLetter = input("It cannot be empty so try again. ")
 		elif tempLetter not in abcLetterList:
 			tempLetter = input("Please input a valid letter. ")
 		elif tempLetter in guessedList:
-			tempLetter = input("You have already guessed this letter. Try again. ")
+			tempLetter = input("You have already guessed this letter so try again. ")
 		else:
-			isInvalid = False
 			print("You entered " + str(tempLetter))
 			guessedList.append(tempLetter)
 			if tempLetter in secertWord:
@@ -48,6 +76,7 @@ def guessWord():
 			else:
 				print("Oops, you are wrong. ")
 				lostLife()
+			break
 	
 
 def lostLife():
@@ -68,35 +97,56 @@ def isFinished():
 		print("\n\n========================\n\n")
 
 
+def printAccuracy():
+	print("You accuracy is " + str(correct / len(guessedList) * 100.0) + "%. \n")
+
+
 def win():
 	printWinner()
-	printSecertWord()
+	print("The secert word is " + secertWord.upper() + ". \n")
 	print("You still have " + "♥" * life + " left. ")
-	printGuessedList()
+	print("You have guessed: " + str(guessedList) + "\n")
+	printAccuracy()
 	print("\n\n================================================\n\n ")
 
 
 def gameOver():
 	printGameOver()
-	printSecertWord()
-	printGuessedList()
+	print("The secert word is " + secertWord.upper() + ". \n")
+	print("You have guessed: " + str(guessedList) + "\n")
 	print("\n\n================================================\n\n ")
 
 
-def printNumOfLife():
-	print("You have " + "♥" * life)
-
-
-def printGuessedList():
+def printInfo(): 
+	print(*blankWordList, sep = ' ')
+	print("There are " + str(len(blankWordList)) + " of letters left. ")
+	print("\nYou have " + "♥" * life)
 	print("You have guessed: " + str(guessedList) + "\n")
 
 
-def printSecertWord():
-	print("The secert word is " + secertWord)
-
-
 def printBlankWord():
-	print(str(blankWordList) + "\n")
+	print("There are " + str(len(blankWordList)) + " of letters left. ")
+	print(*blankWordList, sep = ' ')
+	print("")
+
+def printWelcome():
+	print("\n\n================================================\n\n ")
+	print("        _ _ _     _                          ")
+	print("       | | | |___| |___ ___ _____ ___        ")
+	print("       | | | | -_| |  _| . |     | -_|       ")
+	print("       |_____|___|_|___|___|_|_|_|___|       ")
+	print("                                             ")
+	print("                  _____                      ")
+	print("                 |_   _|___                  ")
+	print("                   | | | . |                 ")
+	print("                   |_| |___|                 ")
+	print("                                             ")
+	print("   _____ _____ _____ _____ _____ _____ _____ ")
+	print("  |  |  |  _  |   | |   __|     |  _  |   | |")
+	print("  |     |     | | | |  |  | | | |     | | | |")
+	print("  |__|__|__|__|_|___|_____|_|_|_|__|__|_|___|")
+	print("                                             ")
+	print("\n\n================================================\n\n ")
 
 
 def printGameStart():
@@ -111,33 +161,35 @@ def printGameStart():
 
 def printGameOver():
 	print("\n\n================================================\n\n ")
-	print(" _____                   _____                ")
-	print("|   __| ___  _____  ___ |     | _ _  ___  ___ ")
-	print("|  |  || .'||     || -_||  |  || | || -_||  _|")
-	print("|_____||__,||_|_|_||___||_____| \_/ |___||_|  ")
-	print("                                              ")
+	print("  _____                   _____                ")
+	print(" |   __| ___  _____  ___ |     | _ _  ___  ___ ")
+	print(" |  |  || .'||     || -_||  |  || | || -_||  _|")
+	print(" |_____||__,||_|_|_||___||_____| \_/ |___||_|  ")
+	print("                                               ")
 	print("\n\n------------------------------------------------\n\n ")
 
 
 def printWinner():
 	print("\n\n================================================\n\n ")
-	print(" _ _ _ _ _____ _____ _____ _____              ")
-	print("| | | |_|   | |   | |   __| __  |             ")
-	print("| | | | | | | | | | |   __|    -|             ")
-	print("|_____|_|_|___|_|___|_____|__|__|             ")
-	print("                                              ")
+	print("        _ _ _ _ _____ _____ _____ _____         ")
+	print("       | | | |_|   | |   | |   __| __  |        ")
+	print("       | | | | | | | | | | |   __|    -|        ")
+	print("       |_____|_|_|___|_|___|_____|__|__|        ")
+	print("                                                ")
 	print("\n\n------------------------------------------------\n\n ")
 
 
 if __name__ == "__main__":
-	printGameStart()
+	gameStart()
 	randomSecertWord()
 
 	while isStart:
-		printBlankWord()
-		printNumOfLife()
-		printGuessedList()
+
+		printInfo()
 
 		guessWord()
-		
+		# print("Test")
+		# printInfo()
+		# print("Test")
 		isFinished()
+		
